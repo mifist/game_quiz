@@ -1,0 +1,29 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3886202, 2020-04-02T08:45:41-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: LemonYellowSun by Hanoded
+ * URL: https://www.myfonts.com/fonts/hanoded/lemon-yellow-sun/regular/
+ * Copyright: Copyright (c) 2014 by David Kerkhoff. All rights reserved.
+ * 
+ * 
+ * 
+ * © 2020 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/3b4c7a");
+  
+@font-face {
+  src: url('webFonts/LemonYellowSun/font.eot');
+  font-family: 'LemonYellowSun';
+  src: url('webFonts/LemonYellowSun/font.woff2') format('woff2'), url('webFonts/LemonYellowSun/font.woff') format('woff'), url('webFonts/LemonYellowSun/font.eot?#iefix') format('embedded-opentype'), url('webFonts/LemonYellowSun/font.ttf') format('truetype');
+}
+
