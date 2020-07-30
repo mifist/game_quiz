@@ -64,11 +64,13 @@
 		}
 	};
 	const backToStep = ( currentStep ) => {
-		var data_steps =  currentStep.attr('data-step');
+		var data_steps =  currentStep.attr('data-step'),
+			next_btn_txt = 'VALIDER MA REPONSE';
 		if(data_steps > 1){
 			if(currentStep.hasClass('current')){
 				currentStep.removeClass('current');
 				currentStep.prev('.quiz-step').addClass('current');
+			//	currentStep.prev('.quiz-step').find('.quiz-step-next').text(next_btn_txt);
 				if ( currentStep.prev('.quiz-step').hasClass('valid') ) {
 					currentStep.prev('.quiz-step').find('.answers').find('.quiz-answer').map((index, element) => {
 						$(element).addClass('no-active');
@@ -167,8 +169,9 @@
 				ansOpts = currentStep.children('.quiz-answer'),
 				quizScore = 0,
 				max_quizScore = 0,
-				answer_media_src = '';
-				answer_media_src = '';
+				answer_media_src = '',
+				next_btn_txt = 'VALIDER MA REPONSE',
+				next_btn_txt_valid = 'Question suivante';
 		
 			currentStep.on('click', '.quiz-answer', function (e) {
 				if ( $(this).parent('.answers').hasClass('is_multiple') ) {
@@ -212,12 +215,7 @@
 					parent = _this.parents('.quiz-step'),
 					erroe_msg = parent.find('.error-msg'),
 					answer_wrap = parent.find('.answers');
-				
-				if ( currentStep.hasClass('valid') ) {
-					answer_wrap.find('.quiz-answer').map((index, element) => {
-						$(element).addClass('no-active');
-					});
-				}
+			
 				
 				answer_wrap.find('.quiz-answer').map((index, element) => {
 					  let el = $(element),
@@ -244,6 +242,17 @@
 					
 				});
 				
+				
+				if ( currentStep.hasClass('valid') ) {
+					answer_wrap.find('.quiz-answer').map((index, element) => {
+						$(element).addClass('no-active');
+					});
+				} else if ( ! currentStep.hasClass('valid')  ) {
+					answer_wrap.find('.quiz-answer').map((index, element) => {
+						$(element).removeClass('no-active');
+					});
+				}
+				
 				if ( hasClickedAnswer && !_this.hasClass('validate') ) {
 					//console.log({answer_media_src});
 					if ( currentStep.hasClass('video-quiz')  ) {
@@ -269,6 +278,7 @@
 					parent.find('.quiz-step__media.images > img').attr('src', answer_media_src);
 					setTimeout(function () {
 						_this.addClass('validate');
+						_this.text(next_btn_txt_valid);
 					}, 1000);
 				}
 				
@@ -282,7 +292,7 @@
 						totalScore++;
 					}
 					nextStep(currentStep, lastItems );
-				}
+				} 
 				
 				//console.log({quizScore});
 				//console.log({max_quizScore});

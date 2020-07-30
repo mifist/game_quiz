@@ -9,7 +9,7 @@ $game_list_page_id = get_page_id_within_shortcode();
 $game_score_arr = get_score_by_user_id($game_id)[0];
 $game_score = $game_score_arr->score;
 $game_score_total = $game_score_arr->total_score;
-$lock_quiz = check_current_user_subscription();
+$is_subscription = check_current_user_subscription();
 ?>
 <div class="single-game__preview show">
 	 <a class="single-game__back-btn btn btn-back btn-light-menu" href="<?php echo get_the_permalink( $game_list_page_id ); ?>">
@@ -25,10 +25,14 @@ $lock_quiz = check_current_user_subscription();
 			<?php echo $game_date ? '<span class="preview-content__date">'.__('du').' <time>' .$game_date.'</time></span>': ''; ?>
 		</div>
 		<?php echo $game_description ? '<div class="preview-content__description">'.$game_description.'</div>' : ''; ?>
-		<?php if( $game_score_arr && !$lock_quiz && is_user_logged_in() ) : ?>
+		<?php if( $game_score_arr && is_user_logged_in() && $is_subscription ) : ?>
 			<div class="preview-content__max-score">
 				<span class="score-label"><?php echo __('Meilleur score', ca_textdomain); ?>: </span>
 				<span class="score-value"><?php echo $game_score.'/'.$game_score_total; ?></span>
+			</div>
+		<?php else : ?>
+			<div class="preview-content__max-score">
+				<?php echo __('Pas de score', ca_textdomain); ?>
 			</div>
 		<?php endif; ?>
 		

@@ -544,3 +544,15 @@ function check_current_user_subscription() {
 	}
 	
 }
+
+/**
+ * @snippet       Translate a String in WooCommerce
+ */
+add_filter( 'woocommerce_subscriptions_product_price_string', 'wc_subscriptions_custom_price_string' );
+add_filter( 'woocommerce_subscription_price_string', 'wc_subscriptions_custom_price_string' );
+function wc_subscriptions_custom_price_string( $pricestring ) {
+	$newprice = str_replace( '/ month', '/ mois', $pricestring );
+	return $newprice;
+}
+
+

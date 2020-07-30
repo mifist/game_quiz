@@ -88,6 +88,7 @@ p {
 .et_mobile_menu .btn-light-menu {
   border: 0 solid #8b8b8b;
   outline: 0 dashed #a9a9a9;
+  font-weight: bold;
 }
 
 #main-header {
@@ -95,23 +96,34 @@ p {
   z-index: 99; /* MD 25.04.20 : change the z-index for hamburger menu bug (Early launch) */
 }
 
+#logo {
+  max-height: 42px;
+}
+
 /* // BTN LIGHT */
 
 .btn-light {
-  font-size: 24px;
+  font-size: 20px;
   padding: 0.1em 1em;
-  color: #454545;
+  color: #666;
   text-transform: uppercase;
   border: 2px solid #8b8b8b;
   outline: 2px dashed #a9a9a9;
   outline-offset: -7px;
   border-radius: 3% 45% 13% 9%/35% 1% 3% 10% !important;
+  font-weight: bold;
 }
 
 .btn-light:hover, .btn-dark:hover  {
   padding: 0.1em 1em !important;
   padding-right: 0.7em !important;
   padding-left: 2em !important;
+}
+
+.btn-light:hover {
+  background: #333 !important;
+  color: #fff !important;
+  opacity: 1 !important;
 }
 
 .btn-light-menu {
@@ -122,10 +134,18 @@ p {
   outline: 2px dashed #a9a9a9;
   outline-offset: -7px;
   border-radius: 3% 45% 13% 9%/35% 1% 3% 10% !important;
+  font-weight: bold;
+}
+
+.btn-light-menu:hover {
+  background: #333 !important;
+  color: #fff !important;
+  opacity: 1 !important;
 }
 .btn-light-filter {
-  font-size: 24px;
-  color: #454545;
+  font-size: 20px;
+  font-weight: bold;
+  color: #666;
   cursor: pointer;
   padding: 0.8em 1em;
   padding-bottom: 15px !important;
@@ -173,7 +193,7 @@ p {
 .woocommerce-form-login__submit {
   font-size: 24px !important;
   padding: 0.1em 1em !important;
-  color: #454545 !important;
+  color: #666 !important;
   text-transform: uppercase;
   border: 2px solid #8b8b8b !important;
   outline: 2px dashed #a9a9a9;
@@ -190,8 +210,12 @@ p {
 .woocommerce-Button:hover,
 .woocommerce-form-register__submit:hover,
 .woocommerce-form-login__submit:hover {
-  color: #454545;
+  /* color: #666; */
+  background: #333 !important;
+  color: #fff !important;
+  opacity: 1 !important;
 }
+
 
 .woocommerce-form-coupon button:hover:after,
 .woocommerce-cart-form__contents button:hover:after,
@@ -217,13 +241,12 @@ p {
   text-transform: uppercase;
   background: #ECE5D5;
   border: #8b8b8b solid 2px;
-  color: #454545;
+  color: #666;
   border-radius: 24% 16% 13% 9%/35% 22% 31% 34% !important;
 }
 
 .btn-dark:hover,
 /* .btn-light-filter:hover, */
-.wpcf7-submit:hover,
 .wc-forward:hover,
 .single_add_to_cart_button:hover,
 .checkout-button:hover,
@@ -232,12 +255,23 @@ p {
   background-color: rgba(0,0,0,.05) !important;
 }
 
+.wpcf7-submit:hover {
+  background: #333 !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+.btn-light-filter:hover {
+  background: #333 !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
 .wc-proceed-to-checkout .checkout-button {
   font-size: 24px !important;
   padding: 0.1em 1em !important;
   background: #ECE5D5 !important;
   border: #8b8b8b solid 2px !important;
-  color: #454545 !important;
+  color: #666 !important;
   border-radius: 24% 16% 13% 9%/35% 22% 31% 34% !important;
   width: fit-content;
   float: right;
@@ -257,7 +291,7 @@ p {
   text-transform: uppercase;
   background: #ECE5D5 !important;
   border: #8b8b8b solid 2px !important;
-  color: #454545 !important;
+  color: #666 !important;
   border-radius: 24% 16% 13% 9%/35% 22% 31% 34% !important;
 }
 
@@ -267,7 +301,7 @@ p {
     text-transform: uppercase;
     background: #ECE5D5 !important;
     border: #8b8b8b solid 2px !important;
-    color: #454545 !important;
+    color: #666 !important;
     border-radius: 24% 16% 13% 9%/35% 22% 31% 34% !important;
 }
 
@@ -318,7 +352,7 @@ p {
   border: #8b8b8b solid 2px;
   border-radius: 99% 1% 98% 2% / 1% 99% 1% 99% ;
 }
-.custom-card::before {
+/* .custom-card::before {
     content: url("../images/icons/scotch.svg");
     display: block;
     position: relative;
@@ -328,7 +362,7 @@ p {
     top: -32px;
     margin: 0 auto;
     z-index: 1;
-}
+} */
 
 .et_pb_blurb_content {
   height: 250px;
@@ -440,8 +474,14 @@ p {
   outline: 2px dashed #666666;
   outline-offset: 1px;
   padding: 10px;
+  font-size: 20px;
+  line-height: 22px;
+  width: 100%;
 }
 
+.wpcf7-submit {
+    margin-top: 10px;
+}
 /* icon */
 
 #btn-jouer:before {
@@ -468,6 +508,14 @@ p {
   padding-top: 8px !important;
   height: 60px;
 }
+
+.wc-backward:hover {
+  /* background: #333 !important;
+  color: #fff !important;
+  opacity: 1 !important; */
+}
+
+
 .wc-backward:after {
   content: url("../images/icons/backward.svg") !important;
   transform: scale(0.5);
@@ -480,12 +528,15 @@ p {
   float: left;
   margin-right: 28px;
 }
+.wc-backward:hover:after {
+  /* content: url("../images/icons/backward-white.svg") !important; */
+}
 
 
 .wpcf7-submit {
   font-size: 24px;
   padding: 0.5em 1em;
-  color: #454545;
+  color: #666;
   text-transform: uppercase;
   height: 50px;
   border: 2px solid #8b8b8b;
@@ -513,19 +564,19 @@ span.wpcf7-not-valid-tip {
   margin-top:5px;
 }
 
-/* MD 25.04.20 Quick fixes for early release : 
- * 
+/* MD 25.04.20 Quick fixes for early release :
+ *
  * 1) make button 100% wide on mobile to avoid weird spacing
- * 2) add margins on top of button to space them out */ 
+ * 2) add margins on top of button to space them out */
 
 @media screen and (max-width: 767px) {
 	.single_add_to_cart_button,
 	.checkout-button,
 	.coupon button{
-		margin-top : 20px!important; 
-		width: 100%!important; 
+		margin-top : 20px!important;
+		width: 100%!important;
 	}
-	
+
 	.woocommerce ul.order_details li{ /* MD 26.04.20 : Align order confirmation on mobile (early release)*/
 		width:100%;
 		margin-bottom:20px;
@@ -533,3 +584,221 @@ span.wpcf7-not-valid-tip {
 	}
 }
 
+.subscription-details {
+  font-size: 18px;
+}
+
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals {
+  font-size: 16px;
+}
+
+/* jeux */
+
+.orderby, .woocommerce div.product form.cart .variations td select {
+  max-width: 300px !important;
+}
+
+.quiz-step .btn.quiz-step__media-play:before {
+  content: url("../images/icons/game_play.svg") !important;
+  transform: scale(0.7);
+  opacity: 1 !important;
+  position: relative !important;
+  top: 75px;
+  margin-right: -80px;
+  display: inline-block;
+  margin-bottom: 54px;
+}
+
+.quiz-step .btn.quiz-step__media-play:hover:before {
+  /* content: url("../images/icons/game_play_active.svg") !important; */
+}
+
+.quiz-step .btn.quiz-step__media-pause {
+  margin-top: -45px;
+}
+.quiz-step .btn.quiz-step__media-pause .name {
+  padding: 22px;
+}
+
+.quiz-step .btn.quiz-step__media-pause:before {
+  content: url("../images/icons/game_pause.svg") !important;
+  transform: scale(0.7);
+  opacity: 1 !important;
+  position: relative !important;
+  top: 75px;
+  margin-right: -80px;
+  display: inline-block;
+  margin-bottom: 54px;
+}
+.quiz-step .btn.quiz-step__media-pause::before {
+  /* content: url("../images/icons/game_pause_active.svg") !important; */
+}
+
+
+.quiz-step__media {
+  border: #8b8b8b solid 2px;
+  border-radius: 99% 1% 98% 2% / 1% 99% 1% 99%;
+}
+
+.quiz-step .quiz-answer {
+  border: 2px solid #8b8b8b !important;
+  border-radius: 3% 45% 13% 9%/35% 1% 3% 10% !important;
+  font-weight: bold !important;
+  padding: 5px 8px !important;
+}
+
+.quiz-step .quiz-answer.incorrect, .quiz-step .quiz-answer.correct {
+  border: 2px !important;
+}
+
+.quiz-step__title, .quiz-step__meta {
+  font-weight: bold;
+}
+
+.btn-cta:before {
+  background: transparent !important;
+}
+
+.btn-cta:focus {
+  color: black !important;
+}
+
+.btn-cta:hover * {
+  color: black !important;
+}
+
+
+.quiz-container .quiz-item__max-score {
+  top: 0% !important;
+  left: -7% !important;
+  transform: rotate(-25deg) !important;
+  border: none !important;
+  width: 96px !important;
+  max-width: none !important;
+  background-image: url("../images/icons/scotch.svg") !important;
+  background-size: cover !important;
+  padding: 9px 10px !important;
+  color: black;
+  padding-left: 16px !important;
+}
+
+.single-game__finish .preview-content__current-score {
+  padding: 40px !important;
+  background: none !important;
+  background-image: url(../images/icons/score.svg) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-image: url("../images/icons/score.svg") !important;
+}
+
+.custom-card-addon {
+  z-index: 5;
+  display: block;
+  position: absolute;
+  top: -36px;
+  left: 33%;
+  transform: rotate(-7deg) !important;
+  width: 125px !important;
+  max-width: none !important;
+  background-image: url('../images/icons/scotch.svg') !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .custom-card-addon {
+    left: 30%;
+  }
+}
+
+
+.custom-card-addon .game-label {
+  font-size: 26px;
+  padding-left: 34px;
+}
+.custom-card-addon .boutique-label {
+    padding-left: 16px;
+    font-size: 26px;
+}
+
+.single-game__back-btn, .single-game__play-btn, .single-game__replay-btn {
+  color: #666 !important;
+}
+
+.quiz-step__meta * {
+  font-size: 24px;
+}
+
+.quiz-step .quiz-answer.correct, .quiz-step .quiz-answer.show-correct-answer {
+    border: 2px solid #4add6d !important;
+}
+
+.quiz-step .quiz-answer.incorrect {
+    border: 2px solid #f98184 !important;
+}
+
+.single-game__preview .preview-content__image:before {
+  display: none !important;
+}
+
+.quiz-step__controls .btn-cta.quiz-step__media-play {
+  border: none;
+}
+
+.quiz-step .btn {
+  font-weight: 600;
+}
+
+
+.quiz-container a.quiz-item:hover {
+  opacity: 0.8;
+}
+
+a.btn.quiz-step__media-play:hover,
+a.btn.quiz-step__media-pause:hover {
+  opacity: 0.8;
+}
+
+.quiz-step .btn span .name {
+    color: #333;
+}
+
+.quiz-step__media-play.changed, .quiz-step__media-pause.changed {
+  border: 0px !important;
+}
+
+/* responsive jeux */
+@media screen and (max-width: 767px) {
+  #quiz-container {
+    margin-top : -20px;
+  }
+	.quiz-step {
+    flex-direction: column !important;
+  }
+  .quiz-step__controls {
+    margin: 0 auto !important;
+    margin-top: -60px !important;
+  }
+  .quiz-step .btn {
+    float: left;
+  }
+  .quiz-step .btn.quiz-step__media-pause {
+    margin-top: 0px;
+  }
+
+  .quiz-step__questions {
+    flex-direction: column-reverse !important;
+    margin: 10px 0;
+  }
+  .quiz-step__controls {
+    margin: 10px 0;
+  }
+  .quiz-step__content {
+    margin: 10px 0;
+  }
+  .single-game__back-btn, .single-game__play-btn, .single-game__replay-btn {
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+}

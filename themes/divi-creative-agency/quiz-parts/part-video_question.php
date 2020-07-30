@@ -21,7 +21,7 @@ $correct_media_url = get_sub_field('correct_media_url');
          data-step="<?php echo $game_question_steps; ?>">
 	<div class="quiz-step__controls">
 		<a class="btn btn-cta quiz-step__media-play" href="#cta_modal_media_play_<?php echo $game_question_steps; ?>">
-			<span class="name"><?php echo __('Lancer le son', ca_textdomain); ?></span>
+			<span class="name"><?php echo __('Lancer la vidéo', ca_textdomain); ?></span>
 			<span class="icon"></span>
 		</a>
 		
@@ -94,10 +94,12 @@ $correct_media_url = get_sub_field('correct_media_url');
 			<?php
 			// echo $game_question_steps>1?$game_question_steps-1:1;
 			//echo $game_question_steps<$max_step_count?$game_question_steps+1:$game_question_steps; ?>
-			<a class="btn quiz-step-back btn-light-menu<?php echo $game_question_steps==1?' no-active':''; ?>"
-			   href="#">Question Precedente</a>
+			<?php if( $game_question_steps !== 1 ) : ?>
+				<a class="btn quiz-step-back btn-light-menu<?php echo $game_question_steps==1?' no-active':''; ?>"
+				   href="#">Question Precedente</a>
+			<?php endif; ?>
 			<a class="btn quiz-step-next btn-light-menu"
-			   href="#">VAlder ma reponse</a>
+			   href="#"><?php echo __('VALIDER MA REPONSE', ca_textdomain); ?></a>
 		</div>
 	</div>
 </section>

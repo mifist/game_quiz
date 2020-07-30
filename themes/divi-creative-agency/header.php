@@ -23,6 +23,7 @@
 ?>
 
 	<link rel="stylesheet" type="text/css" href="<? echo $template_directory_uri_child ?>/assets/fonts/MyFontsWebfontsKit.css">
+	<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;700&display=swap" rel="stylesheet">
 
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
