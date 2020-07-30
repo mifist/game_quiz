@@ -66,14 +66,79 @@ function quiz_pagination_callback() {
 
 	check_ajax_referer( 'quiz_game-special-string', 'security' );
 	$quiz_query_args = unserialize( stripslashes( $_POST['quiz_query'] ) );
-	$quiz_query_args['paged'] = $_POST['page'];
+	$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+	$quiz_query_args['paged'] = $page;
 	
 	$quiz_query = new WP_Query( $quiz_query_args );
 	if( $quiz_query->have_posts() ) :?>
 		<div class="quiz-container">
-			<?php while ( $quiz_query->have_posts() ) : $quiz_query->the_post(); ?>
-				<?php get_template_part( 'quiz-parts/quiz-loop' ); ?>
-				<?php  endwhile;  ?>
+			<?php $quiz_key = 0; while ( $quiz_query->have_posts() ) : $quiz_query->the_post();
+				$quiz_id = get_the_ID();
+				$game_date = get_field('game_date', $quiz_id);
+				$game_description = get_field('game_description', $quiz_id);
+				$game_locked_msg = get_field('game_locked_msg', $quiz_id);
+				$locked_link = get_field('game_locked_link', $quiz_id);
+				$game_max_score = 17;
+				$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $quiz_id ), 'full');
+				$is_subscription = check_current_user_subscription();
+				$game_score_arr = get_score_by_user_id($quiz_id)[0];
+				$game_score = $game_score_arr->score;
+				$game_score_total = $game_score_arr->total_score;
+				$lock_quiz = false;
+				if ( $page !== 1 ) {
+					if ( !$is_subscription ) {
+						$lock_quiz = true;
+					} elseif ( $is_subscription ) {
+						$lock_quiz = false;
+					}
+				} else {
+					if ( $quiz_key == 0 && !$is_subscription ) {
+						$lock_quiz = false;
+					} elseif ( !$is_subscription ) {
+						$lock_quiz = true;
+					} elseif ( $is_subscription ) {
+						$lock_quiz = false;
+					}
+				}
+			?>
+				<<?php echo !$lock_quiz ? 'a ' : 'div '; ?>
+						class="quiz-item <?php echo $lock_quiz ? 'lock_quiz' : 'unlock_quiz'; ?>"
+						<?php echo !$lock_quiz ? 'href="'.get_the_permalink($quiz_id).'"' : ''; ?>>
+				
+				<?php if( $game_score_arr && !$lock_quiz && is_user_logged_in() && $is_subscription ) : ?>
+					<span class="quiz-item__max-score">
+						<span class="score-label"><?php echo __('Meilleur score', ca_textdomain); ?>:</span>
+						<span class="score-value"> <?php echo $game_score.' / '.$game_score_total; ?></span>
+					</span>
+				<?php elseif ( !$game_score_arr && !$lock_quiz && is_user_logged_in() && !$is_subscription ) : ?>
+					<span class="quiz-item__max-score">
+						<?php echo __('Pas de score', ca_textdomain); ?>
+					</span>
+				<?php endif; ?>
+				
+				<span class="quiz-item__image">
+					<img src="<?php echo $large_image_url[0]; ?>" alt="<?php echo get_the_title($quiz_id); ?>" loading="lazy">
+				</span>
+				<span class="quiz-item__meta">
+					<h3 class="quiz-item__title quiz-meta"><?php echo get_the_title($quiz_id); ?></h3>
+					<?php echo $game_date ? '<span class="quiz-meta meta-date">'.$game_date.'</span>' : ''; ?>
+				</span>
+				<?php if( $lock_quiz ) : ?>
+					<span class="lock-overlay">
+						<span class="lock-overlay__lock-icon"></span>
+						<?php echo $game_locked_msg ? '<span class="lock-overlay__message">'.$game_locked_msg.'</span>' : ''; ?>
+						<?php if( $locked_link ) : ?>
+							<a class="btn btn-subscribe lock-overlay__btn"
+							   href="<?php echo $locked_link['url'] ?:'#'; ?>"
+							   target="<?php echo $locked_link['target']; ?>">
+								<?php echo $locked_link['title'] ?: __('S`abonner', ca_textdomain); ?>
+							</a>
+						<?php endif; ?>
+					</span>
+				<?php endif; ?>
+				</<?php echo !$lock_quiz ? 'a' : 'div'; ?>>
+		
+			<?php $quiz_key++; endwhile;  ?>
 		</div> <!-- .quiz-container -->
 		
 		<!-- Pagination -->
@@ -513,7 +578,7 @@ function game_score_section_callback( $post, $meta ){
 function check_current_user_subscription() {
 	
 	// Check if user is even logged in, if not exit
-	if ( !is_user_logged_in() ) return;
+	if ( !is_user_logged_in() ) return false;
 	
 	$current_user   = wp_get_current_user(); // get current WP_User
 	$user_id    = $current_user->ID; // get user id
@@ -522,7 +587,6 @@ function check_current_user_subscription() {
 	if ( $is_subscription )
 	{
 		$subscriptions = wcs_get_users_subscriptions( $user_id ); // get array of all subscriptions
-		
 		// Check if there is one subscription or multiple subscriptions per user
 		if ( count( $subscriptions ) > 1 ) {
 			
@@ -531,6 +595,8 @@ function check_current_user_subscription() {
 				if ( $subscription->get_status() == 'active' ) {
 					// Do something
 					return true;
+				} else {
+					return false;
 				}
 			}
 		} else { // Only 1 subscription
@@ -539,6 +605,8 @@ function check_current_user_subscription() {
 			if ( $subscription->get_status() == 'active' ) {
 				// Do something
 				return true;
+			} else {
+				return false;
 			}
 		}
 	}

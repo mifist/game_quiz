@@ -16,9 +16,10 @@ if ( $quiz_key === 0 && !$is_subscription ) {
 	$lock_quiz = false;
 } elseif ( $quiz_key > 0 && !$is_subscription ) {
 	$lock_quiz = true;
-} else {
+} elseif ( $is_subscription ) {
 	$lock_quiz = false;
 }
+
 ?>
 <<?php echo !$lock_quiz ? 'a ' : 'div '; ?>
 	class="quiz-item <?php echo $lock_quiz ? 'lock_quiz' : 'unlock_quiz'; ?>"
