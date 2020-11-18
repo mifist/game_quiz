@@ -4,6 +4,7 @@ global $quiz_key;
 $game_id = $post->ID;
 $finish_image = get_field('game_finish_image', $game_id);
 $finish_description = get_field('game_finish_description', $game_id);
+$is_free = get_field('is_this_game_free', $game_id);
 $game_list_page_id = get_page_id_within_shortcode();
 // score DB
 $game_score_arr = get_score_by_user_id($game_id)[0];

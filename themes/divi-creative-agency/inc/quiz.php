@@ -78,6 +78,7 @@ function quiz_pagination_callback() {
 				$game_description = get_field('game_description', $quiz_id);
 				$game_locked_msg = get_field('game_locked_msg', $quiz_id);
 				$locked_link = get_field('game_locked_link', $quiz_id);
+				$is_free = get_field('is_this_game_free', $quiz_id);
 				$game_max_score = 17;
 				$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $quiz_id ), 'full');
 				$is_subscription = check_current_user_subscription();
@@ -170,8 +171,9 @@ function quiz_template( $atts ) {
 		'post_type'      => 'jeux',
 		'post_status'    => array( 'publish', 'private' ),
 		'posts_per_page' => 9,
-		'orderby'        => 'menu_order',
-		'order'          => 'ASC',
+		'meta_key'       => 'game_date',
+		'orderby'        => 'meta_value',
+		'order'          => 'DESC',
 		'paged'          => $paged,
 	);
 	$quiz_query = new WP_Query( $loop_args );

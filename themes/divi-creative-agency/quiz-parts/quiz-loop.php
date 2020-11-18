@@ -5,6 +5,7 @@ $game_date = get_field('game_date', $quiz_id);
 $game_description = get_field('game_description', $quiz_id);
 $game_locked_msg = get_field('game_locked_msg', $quiz_id);
 $locked_link = get_field('game_locked_link', $quiz_id);
+$is_free = get_field('is_this_game_free', $quiz_id);
 $game_max_score = 17;
 $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $quiz_id ), 'full');
 $is_subscription = check_current_user_subscription();

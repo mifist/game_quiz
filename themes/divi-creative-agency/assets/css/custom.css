@@ -782,6 +782,7 @@ a.btn.quiz-step__media-pause:hover {
   }
   .quiz-step .btn {
     float: left;
+    margin-top: 10px;
   }
   .quiz-step .btn.quiz-step__media-pause {
     margin-top: 0px;
@@ -802,3 +803,75 @@ a.btn.quiz-step__media-pause:hover {
     margin-bottom: 10px;
   }
 }
+
+
+.quiz-custom-pagination li .page-numbers.current {
+  background: #f1c7ba !important;
+}
+
+
+.woocommerce-MyAccount-navigation-link {
+  font-size: 18px;
+}
+
+.woocommerce table.my_account_orders {
+  font-size: 18px;
+}
+
+.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
+  font-size: 15px;
+}
+
+.woocommerce table.shop_table {
+  font-size: 16px;
+}
+
+#order_review_heading {
+  margin-top: 40px;
+}
+
+.woocommerce .woocommerce-customer-details, .woocommerce .woocommerce-order-details, .woocommerce .woocommerce-order-downloads {
+  margin-top: 30px;
+}
+
+.woocommerce-account .addresses .title .edit {
+  font-size: 16px;
+}
+
+.entry-content address {
+  font-size: 16px;
+}
+
+
+
+/* MD changes 31.07.2020 */ 
+
+@media screen and (max-width: 768px){
+	.cta_modal.show {
+		max-width:95%;
+	}
+}
+
+@media screen and (max-width: 375px){
+	body{
+		padding:2.5%;
+	}
+	
+	#main-content .container{
+		width:90%;
+	}
+	
+	.single-game__preview .preview-content__image{
+		width:auto !important;
+	}
+	
+	h1::before {
+		margin-left:-30px;
+	}
+}
+
+.score-value, .score-label{
+	margin-top:-10px;
+}
+
+	

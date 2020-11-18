@@ -629,7 +629,6 @@
     margin-left: 5px; }
   .quiz-step__title {
     font-size: 1.3em;
-	font-family : 'Alegreya Sans SC', sans-serif !important; /* modification MD 28.07.20 */
     color: #000;
     margin-top: 20px;
     margin-bottom: 20px; }
@@ -654,7 +653,6 @@
     text-align: left;
     cursor: pointer;
     font-size: 1.3em;
-	font-family : 'Alegreya Sans SC', sans-serif !important; /* modification MD 28.07.20 */
     margin-bottom: 5px;
     padding: 3px 5px;
     border: 1px solid #333;
